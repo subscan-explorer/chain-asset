@@ -1,0 +1,30 @@
+{
+  "name": "@subscan/chain-asset",
+  "version": "1.0.0",
+  "description": "This package contains assets info of projects used in Subscan",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "npx webpack",
+    "pub": "npm version patch && npm publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subscan-explorer/chain-asset.git"
+  },
+  "keywords": [
+    "subscan",
+    "polkadot",
+    "assets"
+  ],
+  "author": "carlhong",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/subscan-explorer/chain-asset/issues"
+  },
+  "homepage": "https://github.com/subscan-explorer/chain-asset#readme",
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
