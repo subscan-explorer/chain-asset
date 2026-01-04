@@ -1,6 +1,6 @@
 [
   {
-    "TokenID": "7373",
+    "TokenID": "standard_assets/7373",
     "TokenSymbol": "PEPE",
     "Logo": "../logos/assethub-kusama_asset_PEPE.png",
     "Description (en)": "lets get some chicken nuggies frens",
@@ -15,7 +15,7 @@
     "Network": "assethub-kusama"
   },
   {
-    "TokenID": "1984",
+    "TokenID": "standard_assets/1984",
     "TokenSymbol": "USDt",
     "Logo": "../logos/assethub-kusama_asset_USDt.png",
     "Description (en)": "",

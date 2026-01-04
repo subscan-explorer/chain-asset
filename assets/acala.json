@@ -128,7 +128,7 @@
     "Network": "acala"
   },
   {
-    "TokenID": "tDOT",
+    "TokenID": "asset_registry/55ff486ef5b51969c0b6624552f592dd1c6a1490",
     "TokenSymbol": "tDOT",
     "Logo": "../logos/acala_custom_tDOT.svg",
     "Website Link": "https://www.taigaprotocol.io/",
