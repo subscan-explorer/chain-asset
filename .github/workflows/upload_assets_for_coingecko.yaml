@@ -1,7 +1,7 @@
 name: Upload Assets
 on:
   push:
-    branches: ["*"]
+    branches: ["main"]
     paths:
       - assets/**
       - .github/actions/merge_coingecko/**
