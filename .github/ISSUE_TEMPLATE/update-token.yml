@@ -1,0 +1,76 @@
+name: Update Token Information
+description: Update existing token information
+title: "[Update Token] "
+labels: ["update-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to update existing token information in the repository.
+
+  - type: input
+    id: subscan-link
+    attributes:
+      label: Subscan Link
+      description: Link to the existing token on Subscan
+      placeholder: "e.g., https://polkadot.subscan.io/assets/1234"
+    validations:
+      required: true
+
+  - type: input
+    id: token-symbol
+    attributes:
+      label: Token Symbol
+      description: The symbol of the token to be updated
+      placeholder: "e.g., DOT, USDT"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: update-fields
+    attributes:
+      label: Fields to Update
+      description: Select which fields you want to update
+      options:
+        - label: Icon/Logo
+        - label: CoinGecko API ID
+        - label: Description
+        - label: Website Link
+        - label: Social Links (Twitter, Telegram, Discord, etc.)
+        - label: Tag
+        - label: Other
+
+  - type: textarea
+    id: update-details
+    attributes:
+      label: Update Details
+      description: Provide the new information for the selected fields
+      placeholder: |
+        Please specify what needs to be updated and provide the new values.
+
+        Example:
+        - New logo: [attach or link]
+        - New website: https://new-website.io
+        - New Twitter: https://twitter.com/new_handle
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Update
+      description: Explain why this update is needed
+      placeholder: "e.g., Rebranding, website migration, official social media change"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Acknowledgment
+      description: Please confirm the following
+      options:
+        - label: I confirm that all provided information is accurate
+          required: true
+        - label: I have the authority to request this update
+          required: true

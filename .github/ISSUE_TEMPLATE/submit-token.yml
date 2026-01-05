@@ -1,0 +1,136 @@
+name: Submit Token Information
+description: Submit new token information or update existing token details
+title: "[Token Submission] "
+labels: ["token-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for submitting token information! Please fill out the form below completely.
+
+        **Review Process**: Subscan team will review your submission within 3-5 business days.
+        After approval, updates will be reflected on Subscan within 2-3 business days.
+
+  - type: input
+    id: subscan-link
+    attributes:
+      label: Subscan Link
+      description: Direct link to your token on Subscan
+      placeholder: "e.g., https://polkadot.subscan.io/assets/1234"
+    validations:
+      required: true
+
+  - type: textarea
+    id: icon
+    attributes:
+      label: Icon/Logo
+      description: |
+        Attach your token logo file or provide a direct link
+        - Format: PNG or SVG (lowercase extension only)
+        - Size: Less than 30KB
+        - Background: Transparent preferred
+      placeholder: "Attach file or paste link here"
+    validations:
+      required: true
+
+  - type: input
+    id: coingecko-id
+    attributes:
+      label: CoinGecko API ID
+      description: Your token's API ID on CoinGecko (optional, leave empty if not listed)
+      placeholder: "e.g., polkadot"
+    validations:
+      required: false
+
+  - type: textarea
+    id: description-en
+    attributes:
+      label: Description (English)
+      description: Brief description of your token/project in English
+      placeholder: "ABC is a governance token for..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: description-zh
+    attributes:
+      label: Description (Chinese)
+      description: Brief description of your token/project in Chinese (optional)
+      placeholder: "ABC 是一个治理代币..."
+    validations:
+      required: false
+
+  - type: input
+    id: website
+    attributes:
+      label: Website Link
+      description: Official website URL
+      placeholder: "https://your-project.io"
+    validations:
+      required: false
+
+  - type: input
+    id: twitter
+    attributes:
+      label: Twitter/X Link
+      description: Official Twitter/X account
+      placeholder: "https://twitter.com/your_project"
+    validations:
+      required: false
+
+  - type: input
+    id: telegram
+    attributes:
+      label: Telegram Link
+      description: Official Telegram group/channel
+      placeholder: "https://t.me/your_project"
+    validations:
+      required: false
+
+  - type: input
+    id: discord
+    attributes:
+      label: Discord Link
+      description: Official Discord server
+      placeholder: "https://discord.gg/your_invite"
+    validations:
+      required: false
+
+  - type: input
+    id: medium
+    attributes:
+      label: Medium Link
+      description: Official Medium publication
+      placeholder: "https://medium.com/@your_project"
+    validations:
+      required: false
+
+  - type: input
+    id: github
+    attributes:
+      label: GitHub Link
+      description: Official GitHub repository
+      placeholder: "https://github.com/your-org/your-repo"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Any other relevant information about your token
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Acknowledgment
+      description: Please confirm the following
+      options:
+        - label: I confirm that all provided information is accurate
+          required: true
+        - label: I have the authority to submit this token information
+          required: true
+        - label: I understand that the Subscan team will review this submission
+          required: true

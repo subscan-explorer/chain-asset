@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Subscan Support
+    url: https://support.subscan.io
+    about: For general questions and support
+  - name: Subscan Documentation
+    url: https://docs.subscan.io
+    about: Technical documentation and guides
