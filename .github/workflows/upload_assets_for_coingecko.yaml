@@ -53,12 +53,12 @@ jobs:
       - name: Move json to config repo
         if: steps.check_config_change.outputs.skip_commit == 'false' && success()
         run: |
-          mv ${{steps.merge_json.outputs.json_filename }} ./${{ secrets.CONFIG_REPO_NAME }}/subscan/networks/coingecko-token_auto_generated.json
+          mv ${{steps.merge_coingecko.outputs.json_filename }} ./${{ secrets.CONFIG_REPO_NAME }}/subscan/networks/coingecko-token-auto-generated.json
       - name: Commit and push
         if: steps.check_config_change.outputs.skip_commit == 'false' && success()
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           cd ./${{ secrets.CONFIG_REPO_NAME }}
-          git add subscan/networks/coingecko-token_auto_generated.json
-          git commit -m '[Automated] Update coingecko-token_auto_generated.json' && git push
+          git add subscan/networks/coingecko-token-auto-generated.json
+          git commit -m '[Automated] Update coingecko-token-auto-generated.json' && git push

@@ -11,7 +11,7 @@ interface AssetItem {
   quote: string[];
 }
 
-// 通用数组去重工具函数（保留元素顺序，无重复项）
+// Generic array deduplication utility function (preserves element order, no duplicates)
 const uniqueArray = <T>(arr: T[]): T[] => {
   const set = new Set<T>();
   return arr.filter(item => {
@@ -23,7 +23,7 @@ const uniqueArray = <T>(arr: T[]): T[] => {
   });
 };
 
-// 核心：生成【Symbol+HistorySlug】双字段联合唯一键
+// Core: Generate union unique key from Symbol+HistorySlug composite fields
 const generateUnionKey = (symbol: string, historySlug: string): string => {
   return `${historySlug}`;
 };
@@ -75,21 +75,21 @@ function processJsonFiles(directoryPath: string): Array<AssetItem> {
 }
 
 
-// 最终合并函数（双主键匹配+深度合并+顺序保留）
+// Final merge function (composite key matching + deep merge + order preservation)
 const mergeAssetArrays = (a: AssetItem[], b: AssetItem[]): AssetItem[] => {
   const assetMap = new Map<string, AssetItem>();
 
-  // 第一步：存入数组a的所有项，生成双主键索引
+  // Step 1: Store all items from array a, generate composite key index
   a.forEach(item => {
     const unionKey = generateUnionKey(item.Symbol, item.HistorySlug);
     assetMap.set(unionKey, { ...item });
   });
 
-  // 第二步：遍历数组b，执行双主键匹配+合并逻辑
+  // Step 2: Iterate through array b, execute composite key matching + merge logic
   b.forEach(item => {
     const unionKey = generateUnionKey(item.Symbol, item.HistorySlug);
     if (assetMap.has(unionKey)) {
-      // a数组的quote不参与合并，直接使用b数组的quote（如果b数组quote为空则结果也为空）
+      // Array a's quote is not merged, directly use array b's quote (if array b's quote is empty, result is also empty)
       assetMap.set(unionKey, {
         ...item,
         quote: item.quote
@@ -99,18 +99,18 @@ const mergeAssetArrays = (a: AssetItem[], b: AssetItem[]): AssetItem[] => {
     }
   });
 
-  // 第三步：严格保留最终顺序 → b数组项在前 + a数组独有项在后
+  // Step 3: Strictly preserve final order → array b items first + array a unique items last
   const result: AssetItem[] = [];
   b.forEach(item => {
     const unionKey = generateUnionKey(item.Symbol, item.HistorySlug);
     const target = assetMap.get(unionKey);
     if (target) {
       result.push(target);
-      assetMap.delete(unionKey); // 防止重复添加
+      assetMap.delete(unionKey); // Prevent duplicate additions
     }
   });
 
-  // 再添加a数组中，b数组没有的独有项（保持a自身原有顺序）
+  // Add unique items from array a that are not in array b (preserve array a's original order)
   a.forEach(item => {
     const unionKey = generateUnionKey(item.Symbol, item.HistorySlug);
     const target = assetMap.get(unionKey);
@@ -122,7 +122,7 @@ const mergeAssetArrays = (a: AssetItem[], b: AssetItem[]): AssetItem[] => {
   return result;
 };
 
-// 带超时的 fetch 请求
+// Fetch request with timeout
 const fetchWithTimeout = async (url: string, options: any, timeoutMs: number = 30000): Promise<any> => {
   const timeoutPromise = new Promise<never>((_, reject) => {
     setTimeout(() => {
@@ -138,13 +138,13 @@ const fetchWithTimeout = async (url: string, options: any, timeoutMs: number = 3
     if (error.message && error.message.includes('timeout')) {
       throw error;
     }
-    // 重新抛出其他错误，包含更多上下文信息
+    // Re-throw other errors with additional context information
     const errorMessage = error.message || error.toString();
     throw new Error(`Fetch failed: ${errorMessage}`);
   }
 };
 
-// 带重试的请求函数
+// Request function with retry mechanism
 const fetchWithRetry = async (url: string, options: any, maxRetries: number = 3, timeoutMs: number = 30000): Promise<any> => {
   let lastError: Error | null = null;
   
@@ -163,7 +163,7 @@ const fetchWithRetry = async (url: string, options: any, maxRetries: number = 3,
       actions.warning(`Attempt ${attempt} failed: ${error.message}`);
       
       if (attempt < maxRetries) {
-        const delay = Math.min(1000 * Math.pow(2, attempt - 1), 10000); // 指数退避，最大10秒
+        const delay = Math.min(1000 * Math.pow(2, attempt - 1), 10000); // Exponential backoff, maximum 10 seconds
         actions.info(`Retrying in ${delay}ms...`);
         await new Promise(resolve => setTimeout(resolve, delay));
       }
@@ -173,9 +173,9 @@ const fetchWithRetry = async (url: string, options: any, maxRetries: number = 3,
   throw new Error(`Failed after ${maxRetries} attempts: ${lastError?.message || 'Unknown error'}`);
 };
 
-// 检查coingecko token是否存在, 如果不存在则移除
+// Check if coingecko token exists, remove if not present
 const filterCoingeckoToken = async (combinedData: AssetItem[], coingeckoToken: string): Promise<AssetItem[]> => {
-  // 获取所有的tokenid
+  // Get all token IDs
   const tokenIds = [];
   for (const data of combinedData) {
     tokenIds.push(data.HistorySlug);
@@ -191,10 +191,10 @@ const filterCoingeckoToken = async (combinedData: AssetItem[], coingeckoToken: s
   actions.info(`Checking coingecko token: ${coingeckoUrl}`);
   
   try {
-    const response = await fetchWithRetry(coingeckoUrl, { headers }, 3, 60000); // 60秒超时，最多重试3次
+    const response = await fetchWithRetry(coingeckoUrl, { headers }, 3, 60000); // 60 second timeout, maximum 3 retries
     const coingeckoData = await response.json();
     const validIds = new Set(coingeckoData.map((item: any) => item.id));
-    // 需要打印被过滤的tokenid
+    // Need to print filtered token IDs
     for (const data of combinedData) {
       if (!validIds.has(data.HistorySlug)) {
         actions.info(`Filtered tokenid: ${data.HistorySlug}`);
@@ -204,7 +204,7 @@ const filterCoingeckoToken = async (combinedData: AssetItem[], coingeckoToken: s
   } catch (error: any) {
     actions.error(`Failed to fetch coingecko data: ${error.message}`);
     actions.warning("Returning original data without filtering due to fetch error");
-    return combinedData; // 如果请求失败，返回原始数据而不是抛出错误
+    return combinedData; // If request fails, return original data instead of throwing error
   }
 }
 
@@ -219,7 +219,7 @@ async function main() {
 
   const kubernetesManifestsBaseCoingeckoJsonPath = "./kubernetes-manifests/subscan/networks/coingecko-token.json";
 
-  // 检查文件是否存在
+  // Check if file exists
   if (!fs.existsSync(kubernetesManifestsBaseCoingeckoJsonPath)) {
     actions.setFailed(`File ${kubernetesManifestsBaseCoingeckoJsonPath} does not exist`);
     return;
