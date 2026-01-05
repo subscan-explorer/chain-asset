@@ -2,6 +2,10 @@ name: Upload Assets
 on:
   push:
     branches: ["*"]
+    paths:
+      - assets/**
+      - .github/actions/merge_coingecko/**
+      - .github/workflows/upload_assets_for_coingecko.yaml
 
 jobs:
   upload-assets:
@@ -19,16 +23,14 @@ jobs:
           repository: ${{ secrets.CONFIG_REPO_OWNER }}/${{ secrets.CONFIG_REPO_NAME }}
           ref: ${{ secrets.CONFIG_BRANCH }}
           token: ${{ secrets.CONFIG_GITHUB_TOKEN }}
-      - name: echo token
-        run: |
-          COINGECKO_API_KEY=${{ secrets.COINGECKO_API_KEY }}
-          echo "COINGECKO_API_KEY length: ${#COINGECKO_API_KEY}"
 
       - name: Merge JSON
         id: merge_coingecko
         uses: ./.github/actions/merge_coingecko
         with:
           coingecko_token: ${{ secrets.COINGECKO_API_KEY }}
+          assets_dir: ./assets
+          base_coingecko_json_path: ./kubernetes-manifests/subscan/networks/coingecko-token.json
       - name: echo json filename
         run: |
           cat "${{ steps.merge_coingecko.outputs.json_filename }}"
