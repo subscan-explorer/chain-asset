@@ -25,7 +25,7 @@ const uniqueArray = <T>(arr: T[]): T[] => {
 
 // 核心：生成【Symbol+HistorySlug】双字段联合唯一键
 const generateUnionKey = (symbol: string, historySlug: string): string => {
-  return `${symbol}_${historySlug}`;
+  return `${historySlug}`;
 };
 
 function processJsonFiles(directoryPath: string): Array<AssetItem> {
@@ -50,7 +50,7 @@ function processJsonFiles(directoryPath: string): Array<AssetItem> {
           if (!data.TokenSymbol || !data["Coingecko API ID"]) {
             continue;
           }
-          const key = generateUnionKey(data.TokenSymbol, data["Coingecko API ID"]);
+          const key = data.TokenSymbol + "_" + data["Coingecko API ID"];
           if (coingeckoTokenObject[key]) {
             coingeckoTokenObject[key].push(data);
           } else {
@@ -89,10 +89,10 @@ const mergeAssetArrays = (a: AssetItem[], b: AssetItem[]): AssetItem[] => {
   b.forEach(item => {
     const unionKey = generateUnionKey(item.Symbol, item.HistorySlug);
     if (assetMap.has(unionKey)) {
-      const existItem = assetMap.get(unionKey)!;
+      // a数组的quote不参与合并，直接使用b数组的quote（如果b数组quote为空则结果也为空）
       assetMap.set(unionKey, {
         ...item,
-        quote: uniqueArray([...item.quote, ...existItem.quote])
+        quote: item.quote
       });
     } else {
       assetMap.set(unionKey, { ...item });
