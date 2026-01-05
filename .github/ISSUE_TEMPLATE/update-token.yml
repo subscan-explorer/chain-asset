@@ -17,15 +17,6 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: token-symbol
-    attributes:
-      label: Token Symbol
-      description: The symbol of the token to be updated
-      placeholder: "e.g., DOT, USDT"
-    validations:
-      required: true
-
   - type: checkboxes
     id: update-fields
     attributes:
@@ -37,7 +28,6 @@ body:
         - label: Description
         - label: Website Link
         - label: Social Links (Twitter, Telegram, Discord, etc.)
-        - label: Tag
         - label: Other
 
   - type: textarea
