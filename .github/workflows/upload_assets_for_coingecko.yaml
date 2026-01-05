@@ -19,7 +19,9 @@ jobs:
           repository: ${{ secrets.CONFIG_REPO_OWNER }}/${{ secrets.CONFIG_REPO_NAME }}
           ref: ${{ secrets.CONFIG_BRANCH }}
           token: ${{ secrets.CONFIG_GITHUB_TOKEN }}
-
+      - name: echo token
+        run: |
+          echo "COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}"
       - name: Merge JSON
         id: merge_coingecko
         uses: ./.github/actions/merge_coingecko
