@@ -214,10 +214,10 @@ async function main() {
     actions.setFailed("Coingecko token is required");
     return ;
   }
-  const assetsDir = "./assets";
+  const assetsDir = actions.getInput("assets_dir");
   const outputFile = "./combined_output_coingecko.json";
 
-  const kubernetesManifestsBaseCoingeckoJsonPath = "./kubernetes-manifests/subscan/networks/coingecko-token.json";
+  const kubernetesManifestsBaseCoingeckoJsonPath = actions.getInput("base_coingecko_json_path");
 
   // Check if file exists
   if (!fs.existsSync(kubernetesManifestsBaseCoingeckoJsonPath)) {
@@ -226,6 +226,10 @@ async function main() {
   }
   
   const combinedData = processJsonFiles(assetsDir);
+  if (combinedData.length === 0) {
+    actions.setFailed("No coingecko token data found");
+    return;
+  }
 
   
   const baseCoingeckoJson: Array<AssetItem> = JSON.parse(fs.readFileSync(kubernetesManifestsBaseCoingeckoJsonPath, 'utf-8'));

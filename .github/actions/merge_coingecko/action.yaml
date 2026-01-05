@@ -8,6 +8,12 @@ inputs:
   coingecko_token:
     description: "The coingecko token"
     required: true
+  assets_dir:
+    description: "The assets directory"
+    default: "./assets"
+  base_coingecko_json_path:
+    description: "The base coingecko json path"
+    default: "./kubernetes-manifests/subscan/networks/coingecko-token.json"
 
 runs:
   using: "composite"
@@ -34,3 +40,5 @@ runs:
       id: merge_coingecko
       env:
         INPUT_COINGECKO_TOKEN: ${{ inputs.coingecko_token }}
+        INPUT_ASSETS_DIR: ${{ inputs.assets_dir }}
+        INPUT_BASE_COINGECKO_JSON_PATH: ${{ inputs.base_coingecko_json_path }}
