@@ -226,17 +226,19 @@ async function main() {
   }
   
   const combinedData = processJsonFiles(assetsDir);
-  const filteredData = await filterCoingeckoToken(combinedData, coingeckoToken);
-  if (filteredData.length === 0) {
-    actions.setFailed("No coingecko token data found");
-    return;
-  }
+
   
   const baseCoingeckoJson: Array<AssetItem> = JSON.parse(fs.readFileSync(kubernetesManifestsBaseCoingeckoJsonPath, 'utf-8'));
 
 
-  const mergedData = mergeAssetArrays(baseCoingeckoJson, filteredData);
-  fs.writeFileSync(outputFile, JSON.stringify(mergedData, null, 2));
+  const mergedData = mergeAssetArrays(baseCoingeckoJson, combinedData);
+  const filteredData = await filterCoingeckoToken(mergedData, coingeckoToken);
+  if (filteredData.length === 0) {
+    actions.setFailed("No coingecko token data found");
+    return;
+  }
+
+  fs.writeFileSync(outputFile, JSON.stringify(filteredData, null, 2));
   actions.setOutput("json_filename", outputFile)
   console.log(`Combined JSON data has been written to ${outputFile}`);
   return ;
