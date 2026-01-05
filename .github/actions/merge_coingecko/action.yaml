@@ -32,3 +32,5 @@ runs:
     - run: node ${{ github.action_path }}/main.js
       shell: bash
       id: merge_coingecko
+      env:
+        INPUT_COINGECKO_TOKEN: ${{ inputs.coingecko_token }}
