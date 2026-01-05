@@ -239,7 +239,7 @@ async function main() {
   fs.writeFileSync(outputFile, JSON.stringify(mergedData, null, 2));
   actions.setOutput("json_filename", outputFile)
   console.log(`Combined JSON data has been written to ${outputFile}`);
-  return mergedData;
+  return ;
 }
 
 main().then();

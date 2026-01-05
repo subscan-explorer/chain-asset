@@ -31,7 +31,7 @@ jobs:
           coingecko_token: ${{ secrets.COINGECKO_API_KEY }}
       - name: echo json filename
         run: |
-          echo "${{ steps.merge_coingecko.outputs.json_filename }}"
+          cat "${{ steps.merge_coingecko.outputs.json_filename }}"
 
 
       # - name: Check Config Change
