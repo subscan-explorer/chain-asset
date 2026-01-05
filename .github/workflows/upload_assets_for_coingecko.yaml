@@ -38,7 +38,7 @@ jobs:
         if: success()
         id: check_config_change
         run: |
-          SOURCE_MD5=($(md5sum "${{ steps.merge_json.outputs.json_filename }}"))
+          SOURCE_MD5=($(md5sum "${{ steps.merge_coingecko.outputs.json_filename }}"))
           DEST_MD5=""
           if [ -f "./${{ secrets.CONFIG_REPO_NAME }}/subscan/networks/coingecko-token_auto_generated.json" ]; then
             DEST_MD5=($(md5sum "./${{ secrets.CONFIG_REPO_NAME }}/subscan/networks/coingecko-token_auto_generated.json"))
