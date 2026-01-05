@@ -21,7 +21,8 @@ jobs:
           token: ${{ secrets.CONFIG_GITHUB_TOKEN }}
       - name: echo token
         run: |
-          echo "COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}"
+          echo "COINGECKO_API_KEY length: ${{ secrets.COINGECKO_API_KEY | length }}"
+
       - name: Merge JSON
         id: merge_coingecko
         uses: ./.github/actions/merge_coingecko
