@@ -40,11 +40,11 @@ jobs:
         run: |
           SOURCE_MD5=($(md5sum "${{ steps.merge_coingecko.outputs.json_filename }}"))
           DEST_MD5=""
-          if [ -f "./${{ secrets.CONFIG_REPO_NAME }}/subscan/networks/coingecko-token_auto_generated.json" ]; then
-            DEST_MD5=($(md5sum "./${{ secrets.CONFIG_REPO_NAME }}/subscan/networks/coingecko-token_auto_generated.json"))
+          if [ -f "./${{ secrets.CONFIG_REPO_NAME }}/subscan/networks/coingecko-token-auto-generated.json" ]; then
+            DEST_MD5=($(md5sum "./${{ secrets.CONFIG_REPO_NAME }}/subscan/networks/coingecko-token-auto-generated.json"))
           fi
-          echo "${{ steps.merge_json.outputs.json_filename }}: $SOURCE_MD5"
-          echo "./${{ secrets.CONFIG_REPO_NAME }}/subscan/networks/coingecko-token_auto_generated.json: $DEST_MD5"
+          echo "${{ steps.merge_coingecko.outputs.json_filename }}: $SOURCE_MD5"
+          echo "./${{ secrets.CONFIG_REPO_NAME }}/subscan/networks/coingecko-token-auto-generated.json: $DEST_MD5"
           if [ "$SOURCE_MD5" = "$DEST_MD5" ]; then
               echo "skip_commit=true" >> $GITHUB_OUTPUT
           else
