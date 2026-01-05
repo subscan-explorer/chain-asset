@@ -209,7 +209,11 @@ const filterCoingeckoToken = async (combinedData: AssetItem[], coingeckoToken: s
 }
 
 async function main() {
-  const coingeckoToken = actions.getInput("coingecko_token", { required: true });
+  const coingeckoToken = actions.getInput("coingecko_token");
+  if (!coingeckoToken) {
+    actions.setFailed("Coingecko token is required");
+    return ;
+  }
   const assetsDir = "./assets";
   const outputFile = "./combined_output_coingecko.json";
 
