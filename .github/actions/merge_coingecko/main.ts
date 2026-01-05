@@ -208,14 +208,8 @@ const filterCoingeckoToken = async (combinedData: AssetItem[], coingeckoToken: s
   }
 }
 
-async function main() {
-  // 调试：检查环境变量
-  const inputToken = process.env.INPUT_COINGECKO_TOKEN;
-  actions.info(`INPUT_COINGECKO_TOKEN from env: ${inputToken ? `${inputToken.substring(0, 10)}...` : 'NOT SET'}`);
-  
+async function main() {  
   const coingeckoToken = actions.getInput("coingecko_token");
-  actions.info(`coingecko_token from getInput: ${coingeckoToken ? `${coingeckoToken.substring(0, 10)}...` : 'NOT SET'}`);
-  
   if (!coingeckoToken) {
     actions.setFailed("Coingecko token is required");
     return ;
@@ -223,7 +217,7 @@ async function main() {
   const assetsDir = "./assets";
   const outputFile = "./combined_output_coingecko.json";
 
-  const kubernetesManifestsBaseCoingeckoJsonPath = "/Users/perror/code/itering/subscan-explorer/kubernetes-manifests/subscan/networks/coingecko-token.json";
+  const kubernetesManifestsBaseCoingeckoJsonPath = "./kubernetes-manifests/subscan/networks/coingecko-token.json";
 
   // 检查文件是否存在
   if (!fs.existsSync(kubernetesManifestsBaseCoingeckoJsonPath)) {
