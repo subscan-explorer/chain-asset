@@ -567,5 +567,21 @@
     "Coingecko API ID": "",
     "Risk": "normal",
     "Network": "hydration"
+  },
+  {
+    "TokenID": "0x8a598fe3e3a471ce865332e330d303502a0e2f52",
+    "TokenSymbol": "aHydrated2-POOL-GETH",
+    "Logo": "",
+    "Description (en)": "",
+    "Description (zh)": "",
+    "Website Link": "",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Category": "erc20",
+    "Coingecko API ID": "gigaeth",
+    "Network": "hydration"
   }
 ]
