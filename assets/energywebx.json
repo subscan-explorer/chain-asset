@@ -1,0 +1,18 @@
+[
+    {
+        "TokenID": "standard_foreign_assets/0c7c3ed3627ad4e1ba0a681b942265b048d787ae",
+        "TokenSymbol": "USDC",
+        "Logo": "../logos/assethub-polkadot_asset_USDC.svg",
+        "Description (en)": "",
+        "Description (zh)": "",
+        "Website Link": "",
+        "Twitter Link": "",
+        "Telegram Link": "",
+        "Discord Link": "",
+        "Medium Link": "",
+        "Github Link": "",
+        "Category": "foreign_asset",
+        "Coingecko API ID": "tether",
+        "Network": "energywebx"
+    }
+]
