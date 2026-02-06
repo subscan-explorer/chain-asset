@@ -31,5 +31,37 @@
     "Github Link": "",
     "Category": "erc721",
     "Network": "astar"
+  },
+  {
+    "TokenID": "standard_assets/4294969281",
+    "TokenSymbol": "USDC",
+    "Logo": "../logos/assethub-polkadot_asset_USDC.svg",
+    "Description (en)": "",
+    "Description (zh)": "",
+    "Website Link": "",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Category": "asset",
+    "Coingecko API ID": "tether",
+    "Network": "astar"
+  },
+  {
+    "TokenID": "standard_assets/4294969280",
+    "TokenSymbol": "USDT",
+    "Logo": "../logos/assethub-polkadot_asset_USDt.svg",
+    "Description (en)": "",
+    "Description (zh)": "",
+    "Website Link": "",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Category": "asset",
+    "Coingecko API ID": "tether",
+    "Network": "astar"
   }
 ]

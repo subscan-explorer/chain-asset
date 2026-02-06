@@ -1,0 +1,18 @@
+[
+  {
+    "TokenID": "asset_registry/c24c173dae0e230c94ab301f276b5ad1366e71c1",
+    "TokenSymbol": "USDT",
+    "Logo": "../logos/assethub-polkadot_asset_USDt.svg",
+    "Description (en)": "",
+    "Description (zh)": "",
+    "Website Link": "",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Category": "custom",
+    "Coingecko API ID": "tether",
+    "Network": "basilisk"
+  }
+]
