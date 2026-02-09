@@ -1,6 +1,6 @@
 {
   "name": "@subscan/chain-assets",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This package contains assets info of projects used in Subscan",
   "main": "dist/main.js",
   "scripts": {
