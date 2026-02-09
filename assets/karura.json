@@ -1,0 +1,18 @@
+[
+  {
+    "TokenID": "asset_registry/11bf06ab60b3b2ecb8588e40b230123689bf359a",
+    "TokenSymbol": "USDT",
+    "Logo": "../logos/assethub-polkadot_asset_USDt.svg",
+    "Description (en)": "",
+    "Description (zh)": "",
+    "Website Link": "",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Category": "custom",
+    "Coingecko API ID": "tether",
+    "Network": "karura"
+  }
+]

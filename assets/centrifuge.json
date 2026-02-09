@@ -1,0 +1,34 @@
+[
+    {
+        "TokenID": "asset_registry/42ba4be6b0ae6390e1d17f607c077801efed60c7",
+        "TokenSymbol": "USDC",
+        "Logo": "../logos/assethub-polkadot_asset_USDC.svg",
+        "Description (en)": "",
+        "Description (zh)": "",
+        "Website Link": "",
+        "Twitter Link": "",
+        "Telegram Link": "",
+        "Discord Link": "",
+        "Medium Link": "",
+        "Github Link": "",
+        "Category": "custom",
+        "Coingecko API ID": "tether",
+        "Network": "centrifuge"
+    },
+    {
+        "TokenID": "asset_registry/0275355923b57e21b8ec1ae90139e353a6a64417",
+        "TokenSymbol": "USDT",
+        "Logo": "../logos/assethub-polkadot_asset_USDt.svg",
+        "Description (en)": "",
+        "Description (zh)": "",
+        "Website Link": "",
+        "Twitter Link": "",
+        "Telegram Link": "",
+        "Discord Link": "",
+        "Medium Link": "",
+        "Github Link": "",
+        "Category": "custom",
+        "Coingecko API ID": "tether",
+        "Network": "centrifuge"
+    }
+]
