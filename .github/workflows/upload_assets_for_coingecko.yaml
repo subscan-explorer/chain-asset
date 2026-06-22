@@ -1,11 +1,11 @@
 name: Upload Assets
-on:
-  push:
-    branches: ["main"]
-    paths:
-      - assets/**
-      - .github/actions/merge_coingecko/**
-      - .github/workflows/upload_assets_for_coingecko.yaml
+on: []
+  # push:
+  #   branches: ["main"]
+  #   paths:
+  #     - assets/**
+  #     - .github/actions/merge_coingecko/**
+  #     - .github/workflows/upload_assets_for_coingecko.yaml
 
 concurrency:
   group: chain-asset-config-repo
