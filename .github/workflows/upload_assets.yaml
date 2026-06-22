@@ -5,6 +5,10 @@ on:
     paths:
       - assets/**
 
+concurrency:
+  group: chain-asset-config-repo
+  cancel-in-progress: false
+
 jobs:
   upload-assets:
     name: Upload Assets
