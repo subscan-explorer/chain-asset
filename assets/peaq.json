@@ -95,5 +95,23 @@
     "Coingecko API ID": "your-open-metaverse",
     "Risk": "normal",
     "Network": "peaq"
+  },
+  {
+    "TokenID": "0x83e2a4ab24a61d138f12569c497c3e5f2bf8694b",
+    "TokenSymbol": "PHN",
+    "Logo": "../logos/peaq_erc20_PHN.svg",
+    "Description (en)": "Peaq Human Node (PHN) is the human-DePIN launch console on peaq Mainnet (Chain ID 3338), consolidating presale, staking, burn routing, vesting, wallet setup and node activation in one interface. PHN has a fixed 100M supply with up to 25% staking APY, and powers proof-of-personhood / Sybil-resistant human nodes that earn for verified useful work.",
+    "Description (zh)": "",
+    "Website Link": "https://peaqhumannode.netlify.app",
+    "Twitter Link": "https://x.com/PeaqHumanNode",
+    "Telegram Link": "https://t.me/PeaqHumanNode",
+    "Discord Link": "https://discord.gg/peaqhumannode",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [],
+    "Category": "erc20",
+    "Coingecko API ID": "",
+    "Risk": "normal",
+    "Network": "peaq"
   }
 ]
