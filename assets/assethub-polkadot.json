@@ -45,6 +45,24 @@
     "Network": "assethub-polkadot"
   },
   {
+    "TokenID": "standard_assets/7873",
+    "TokenSymbol": "dotUSD",
+    "Logo": "../logos/assethub-polkadot_asset_dotUSD.svg",
+    "Description (en)": "dotUSD is Polkadot's native USD-pegged stablecoin on Asset Hub, governed by Polkadot OpenGov. Launched through Referendum 1944, its first phase enables minting and redemption against USDT via a capped Peg Stability Module. DOT-collateralized vaults are planned for a later phase.",
+    "Description (zh)": "dotUSD 是 Polkadot 在 Asset Hub 上的原生美元锚定稳定币，由 Polkadot OpenGov 治理。该资产通过第 1944 号公投推出，第一阶段通过设有额度上限的锚定稳定模块（PSM）支持以 USDT 铸造和赎回。以 DOT 为抵押品的金库机制计划在后续阶段推出。",
+    "Website Link": "https://polkadot.com/",
+    "Twitter Link": "https://x.com/Polkadot",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "https://github.com/paritytech/polkadot-sdk",
+    "Tag": "Stablecoin",
+    "Category": "asset",
+    "Coingecko API ID": "dotusd",
+    "Risk": "normal",
+    "Network": "assethub-polkadot"
+  },
+  {
     "TokenID": "standard_assets/50000478",
     "TokenSymbol": "EURJ",
     "Logo": "../logos/assethub-polkadot_asset_EURJ.png",
