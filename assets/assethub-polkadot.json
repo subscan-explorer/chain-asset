@@ -287,5 +287,20 @@
     "Category": "asset",
     "Coingecko API ID": "gavun-wud",
     "Network": "assethub-polkadot"
+  },
+  {
+    "TokenID": "standard_assets/22222012",
+    "TokenSymbol": "DAMN",
+    "Logo": "../logos/assethub-polkadot_asset_DAMN.png",
+    "Description (en)": "DamnDAO is a quantitative trading decentralized autonomous organization (DAO) based on Polkadot, with a meme community character. It is positioned as a “Quant + Meme” DAO. The project focuses on quantitative trading strategies and community governance on Polkadot, covering areas such as arbitrage and liquidity provision.",
+    "Description (zh)": "DamnDAO 是一个基于 Polkadot 的量化交易去中心化自治组织（Quantitative Trading DAO），同时带有 Meme 社区属性，定位是「量化 + Meme」DAO。 项目专注于 Polkadot 上的量化交易策略与社区治理，涵盖套利和流动性提供等业务。",
+    "Website Link": "https://www.damndao.com/",
+    "Twitter Link": "https://x.com/damndao_en",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Category": "asset",
+    "Network": "assethub-polkadot"
   }
 ]
