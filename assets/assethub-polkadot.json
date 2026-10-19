@@ -78,6 +78,22 @@
     "Network": "assethub-polkadot"
   },
   {
+    "TokenID": "standard_foreign_assets/877d1d7ee6601a669377933448fc532271b09d87",
+    "TokenSymbol": "ETH",
+    "Logo": "../logos/hydration_custom_ETH.png",
+    "Description (en)": "Ethereum-native ETH represented as a foreign asset on Polkadot Asset Hub.",
+    "Description (zh)": "以 foreign asset 形式存在于 Polkadot Asset Hub 上的以太坊原生 ETH。",
+    "Website Link": "https://ethereum.org/",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Category": "foreign_asset",
+    "Coingecko API ID": "ethereum",
+    "Network": "assethub-polkadot"
+  },
+  {
     "TokenID": "standard_assets/555",
     "TokenSymbol": "GAME",
     "Logo": "../logos/assethub-polkadot_asset_GAME.svg",
@@ -241,6 +257,22 @@
     "Medium Link": "",
     "Github Link": "",
     "Category": "asset",
+    "Coingecko API ID": "usd-coin",
+    "Network": "assethub-polkadot"
+  },
+  {
+    "TokenID": "standard_foreign_assets/7d0abd4e76e86720198b8a796ba17ae82a685d33",
+    "TokenSymbol": "USDC",
+    "Logo": "../logos/assethub-polkadot_asset_USDC.svg",
+    "Description (en)": "Ethereum-origin USDC represented as a foreign asset on Polkadot Asset Hub, separate from native Asset Hub USDC (asset 1337).",
+    "Description (zh)": "以 foreign asset 形式存在于 Polkadot Asset Hub 上的以太坊来源 USDC，与 Asset Hub 原生 USDC（资产 1337）独立。",
+    "Website Link": "https://www.circle.com/usdc",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Category": "foreign_asset",
     "Coingecko API ID": "usd-coin",
     "Network": "assethub-polkadot"
   },
