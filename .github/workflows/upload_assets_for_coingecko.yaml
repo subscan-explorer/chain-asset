@@ -35,13 +35,6 @@ jobs:
           coingecko_token: ${{ secrets.COINGECKO_API_KEY }}
           assets_dir: ./assets
           base_coingecko_json_path: ./kubernetes-manifests/subscan/networks/coingecko-token.json
-      - name: echo json filename
-        env:
-          SOURCE_JSON: ${{ steps.merge_coingecko.outputs.json_filename }}
-        run: |
-          cat -- "$SOURCE_JSON"
-
-
       - name: Check Config Change
         if: success()
         id: check_config_change
