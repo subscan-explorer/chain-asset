@@ -7,23 +7,23 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v3
-    - uses: actions/cache@v3
+    - uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3
+    - uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
       id: cache-dist
       with:
         path: main.js
         key: ${{ hashFiles('**/**') }}
     - run: |
-        bash -c "env | sort"
-        echo -------------
-      shell: bash
-    - run: |
-        cd ${{ github.action_path }}
+        cd -- "$ACTION_PATH"
         if [[ ! -d dist ]]; then
           npm install -g yarn
           yarn && yarn build
         fi;
       shell: bash
-    - run: node ${{ github.action_path }}/main.js
+      env:
+        ACTION_PATH: ${{ github.action_path }}
+    - run: node "$ACTION_PATH/main.js"
       shell: bash
       id: merge
+      env:
+        ACTION_PATH: ${{ github.action_path }}
