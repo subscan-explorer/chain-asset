@@ -45,24 +45,6 @@
     "Network": "assethub-polkadot"
   },
   {
-    "TokenID": "standard_assets/7873",
-    "TokenSymbol": "dotUSD",
-    "Logo": "../logos/assethub-polkadot_asset_dotUSD.svg",
-    "Description (en)": "dotUSD is Polkadot's native USD-pegged stablecoin on Asset Hub, governed by Polkadot OpenGov. Launched through Referendum 1944, its first phase enables minting and redemption against USDT via a capped Peg Stability Module. DOT-collateralized vaults are planned for a later phase.",
-    "Description (zh)": "dotUSD 是 Polkadot 在 Asset Hub 上的原生美元锚定稳定币，由 Polkadot OpenGov 治理。该资产通过第 1944 号公投推出，第一阶段通过设有额度上限的锚定稳定模块（PSM）支持以 USDT 铸造和赎回。以 DOT 为抵押品的金库机制计划在后续阶段推出。",
-    "Website Link": "https://polkadot.com/",
-    "Twitter Link": "https://x.com/Polkadot",
-    "Telegram Link": "",
-    "Discord Link": "",
-    "Medium Link": "",
-    "Github Link": "https://github.com/paritytech/polkadot-sdk",
-    "Tag": "Stablecoin",
-    "Category": "asset",
-    "Coingecko API ID": "dotusd",
-    "Risk": "normal",
-    "Network": "assethub-polkadot"
-  },
-  {
     "TokenID": "standard_assets/50000478",
     "TokenSymbol": "EURJ",
     "Logo": "../logos/assethub-polkadot_asset_EURJ.png",
@@ -336,21 +318,6 @@
     "Github Link": "",
     "Category": "asset",
     "Coingecko API ID": "gavun-wud",
-    "Network": "assethub-polkadot"
-  },
-  {
-    "TokenID": "standard_assets/22222012",
-    "TokenSymbol": "DAMN",
-    "Logo": "../logos/assethub-polkadot_asset_DAMN.png",
-    "Description (en)": "DamnDAO is a quantitative trading decentralized autonomous organization (DAO) based on Polkadot, with a meme community character. It is positioned as a “Quant + Meme” DAO. The project focuses on quantitative trading strategies and community governance on Polkadot, covering areas such as arbitrage and liquidity provision.",
-    "Description (zh)": "DamnDAO 是一个基于 Polkadot 的量化交易去中心化自治组织（Quantitative Trading DAO），同时带有 Meme 社区属性，定位是「量化 + Meme」DAO。 项目专注于 Polkadot 上的量化交易策略与社区治理，涵盖套利和流动性提供等业务。",
-    "Website Link": "https://www.damndao.com/",
-    "Twitter Link": "https://x.com/damndao_en",
-    "Telegram Link": "",
-    "Discord Link": "",
-    "Medium Link": "",
-    "Github Link": "",
-    "Category": "asset",
     "Network": "assethub-polkadot"
   }
 ]
