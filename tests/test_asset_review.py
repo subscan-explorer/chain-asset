@@ -255,6 +255,13 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(frames[0]['data'], '{"type":\n"run.completed"}')
         self.assertNotIn('message.completed', review.TERMINAL)
 
+    def test_sse_final_frame_without_blank_line_is_not_dropped(self):
+        lines = [b'id: 7\n', b'event: message.completed\n', b'data: {"type":"message.completed"}\n']
+        frames = list(review.sse_frames(lines))
+        self.assertEqual(len(frames), 1)
+        self.assertEqual(frames[0]['id'], '7')
+        self.assertEqual(frames[0]['data'], '{"type":"message.completed"}')
+
     def test_hook_url_validation_without_credential_disclosure(self):
         for value in ('http://aip.hast.so/call?secret=abc', 'https://evil.example/call?secret=abc',
                       'https://aip.hast.so/agents/hook_123?secret=abc', 'https://u:p@hast.so/call'):
