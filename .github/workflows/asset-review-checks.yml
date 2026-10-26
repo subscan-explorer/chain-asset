@@ -3,14 +3,14 @@ on:
   pull_request:
     paths:
       - .github/workflows/asset-review*.yml
-      - scripts/asset_review.py
-      - tests/test_asset_review.py
+      - scripts/asset_review*.py
+      - tests/test_asset_review*.py
   push:
     branches: [main]
     paths:
       - .github/workflows/asset-review*.yml
-      - scripts/asset_review.py
-      - tests/test_asset_review.py
+      - scripts/asset_review*.py
+      - tests/test_asset_review*.py
 permissions:
   contents: read
 jobs:
@@ -20,4 +20,4 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
-      - run: python3 -m unittest discover -s tests -p 'test_asset_review.py' -v
+      - run: python3 -m unittest discover -s tests -p 'test_asset_review*.py' -v

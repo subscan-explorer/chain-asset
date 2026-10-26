@@ -32,6 +32,48 @@ class TriggerTests(unittest.TestCase):
                 event['sender'] = attacker
                 self.assertFalse(review.owner_event(event, 'issue_comment', 'reviewer'))
 
+    def test_current_app_and_configured_historical_reviewer_are_valid(self):
+        with patch.dict(os.environ, {'LEGACY_REVIEWER_LOGINS': '["freehere107"]'}):
+            self.assertEqual(review.reviewer_logins('subscan-aip-research[bot]'),
+                             {'subscan-aip-research[bot]', 'freehere107'})
+        for value in ('"freehere107"', '["attacker,other"]', '[null]', 'not-json'):
+            with patch.dict(os.environ, {'LEGACY_REVIEWER_LOGINS': value}), self.assertRaises(review.Failure):
+                review.reviewer_logins('subscan-aip-research[bot]')
+
+    def test_migration_preserves_fingerprint_and_filters_legacy_feedback(self):
+        legacy = copy.deepcopy(self.event['comment'])
+        self.issue['user']['login'] = 'freehere107'
+        self.event['sender']['login'] = 'freehere107'
+        legacy['user']['login'] = 'freehere107'
+        legacy['body'] += '\n' + review.MARKER + 'input-sha256=old outcome=needs-info -->'
+        self.event['comment'] = legacy
+        with patch.dict(os.environ, {'LEGACY_REVIEWER_LOGINS': '[]'}):
+            before = review.fingerprint(self.issue, [legacy], 'freehere107')
+        with patch.dict(os.environ, {'LEGACY_REVIEWER_LOGINS': '["freehere107"]'}):
+            self.assertEqual(before, review.fingerprint(self.issue, [legacy], 'subscan-aip-research[bot]'))
+            self.assertFalse(review.owner_event(self.event, 'issue_comment', 'subscan-aip-research[bot]'))
+            forged = copy.deepcopy(legacy)
+            forged['user']['login'] = 'other'
+            self.assertNotEqual(before, review.fingerprint(self.issue, [forged], 'subscan-aip-research[bot]'))
+
+    def test_scheduled_fallback_skips_cooldown_without_waiting(self):
+        self.assertTrue(review.owner_event({}, 'schedule', 'reviewer'))
+        with tempfile.TemporaryDirectory() as folder:
+            event = Path(folder) / 'event.json'
+            event.write_text('{}')
+            record = {'started_at': '2026-10-26T00:00:00Z', 'fingerprint': 'old', 'status': 'completed'}
+            state = {'version': 1, 'repository': review.REPO, 'issues': {'9': record}}
+            with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(event), 'GITHUB_EVENT_NAME': 'schedule',
+                    'REVIEWER_LOGIN': 'reviewer', 'LEGACY_REVIEWER_LOGINS': '[]'}), \
+                    patch.object(review, 'load_state', return_value=state), \
+                    patch.object(review, 'paginate', side_effect=[[self.issue], []]), \
+                    patch.object(review.time, 'time', return_value=review.timestamp(record['started_at']) + 1), \
+                    patch.object(review, 'automatic_input') as waiting, \
+                    patch.object(review, 'output') as output, patch.object(review, 'summary'):
+                review.prepare()
+            waiting.assert_not_called()
+            output.assert_called_once_with('dispatch', 'false')
+
     def test_shared_operator_account_can_submit_but_agent_markers_cannot_loop(self):
         self.event['sender']['login'] = 'reviewer'
         self.event['comment']['user']['login'] = 'reviewer'
@@ -329,6 +371,22 @@ class ProtocolTests(unittest.TestCase):
         plan['dry_run'] = True
         plan['connectivity_check'] = True
         self.assertEqual(review.verify_result(result, plan, 'reviewer')['outcome'], 'skipped')
+
+    def test_legacy_outcome_is_only_valid_for_skip_not_a_new_write_receipt(self):
+        plan = {'issue_number': 9, 'dry_run': False, 'fingerprint': 'f'}
+        issue = {'state': 'open', 'labels': [{'name': 'update-request'}]}
+        marker = review.MARKER + 'input-sha256=f outcome=needs-info -->'
+        url = f'https://github.com/{review.REPO}/issues/9#issuecomment-10'
+        comment = {'user': {'login': 'freehere107'}, 'body': marker, 'html_url': url}
+        with patch.dict(os.environ, {'LEGACY_REVIEWER_LOGINS': '["freehere107"]'}), \
+                patch.object(review, 'github', return_value=issue), \
+                patch.object(review, 'paginate', return_value=[comment]):
+            self.assertEqual(review.verify_result({'issue_number': 9, 'outcome': 'skipped'},
+                plan, 'subscan-aip-research[bot]')['outcome'], 'skipped')
+        with patch.dict(os.environ, {'LEGACY_REVIEWER_LOGINS': '["freehere107"]'}), \
+                patch.object(review, 'github', return_value=comment), self.assertRaises(review.Failure):
+            review.verify_result({'issue_number': 9, 'outcome': 'needs-info', 'comment_url': url},
+                                 plan, 'subscan-aip-research[bot]')
 
     def test_asset_pr_rejects_non_draft_and_workflow_edits(self):
         result = {'issue_number': 9, 'outcome': 'draft-pr', 'pr_url': f'https://github.com/{review.REPO}/pull/10'}

@@ -2,6 +2,9 @@ name: Asset request review
 run-name: Asset review · ${{ github.event_name }} · issue ${{ github.event.issue.number || inputs.issue_number || 'backlog' }}
 
 on:
+  # Preserve the former AIP fallback's 00:00/12:00 Asia/Shanghai cadence.
+  schedule:
+    - cron: '0 4,16 * * *'
   issues:
     types: [opened, edited, reopened]
   issue_comment:
@@ -36,13 +39,14 @@ jobs:
       github.repository == 'subscan-explorer/chain-asset' &&
       github.ref == 'refs/heads/main' &&
       (github.event_name == 'workflow_dispatch' || vars.ASSET_REVIEW_ENABLED == 'true') &&
-      (github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' ||
        (!github.event.issue.pull_request && github.event.sender.type != 'Bot' &&
         github.event.sender.id == github.event.issue.user.id &&
         (github.event_name != 'issue_comment' ||
          (github.event.comment.user.id == github.event.issue.user.id &&
           contains(github.event.comment.body, '/asset-review') &&
-          !(github.event.sender.login == vars.CHAIN_ASSET_AGENT_LOGIN &&
+          !((github.event.sender.login == vars.CHAIN_ASSET_AGENT_LOGIN ||
+             contains(fromJSON(vars.CHAIN_ASSET_LEGACY_REVIEWERS || '[]'), github.event.sender.login)) &&
             contains(github.event.comment.body, '<!-- chain-asset-review:v1 '))))))
     runs-on: ubuntu-latest
     # Rejected comments never acquire this lock or evict a pending owner request.
@@ -57,6 +61,7 @@ jobs:
     env:
       GH_READ_TOKEN: ${{ github.token }}
       REVIEWER_LOGIN: ${{ vars.CHAIN_ASSET_AGENT_LOGIN }}
+      LEGACY_REVIEWER_LOGINS: ${{ vars.CHAIN_ASSET_LEGACY_REVIEWERS || '[]' }}
       REVIEW_COOLDOWN_SECONDS: '1800'
       REVIEW_STATE_DIR: asset-review-state
     steps:
@@ -65,7 +70,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Test trigger gates and event parsing
-        run: python3 -m unittest discover -s tests -p 'test_asset_review.py' -v
+        run: python3 -m unittest discover -s tests -p 'test_asset_review*.py' -v
       - name: Resolve current input, cooldown and unfinished runs
         id: prepare
         run: python3 scripts/asset_review.py prepare
