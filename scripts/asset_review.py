@@ -351,7 +351,7 @@ def sse_frames(lines, deadline=None):
             raise TimeoutError('SSE deadline reached.')
         line = raw.decode('utf-8').rstrip('\r\n') if isinstance(raw, bytes) else raw.rstrip('\r\n')
         if not line:
-            if frame['data']:
+            if frame['data'] or frame['event'] or frame['id']:
                 yield {**frame, 'data': '\n'.join(frame['data'])}
             frame = {'event': '', 'id': '', 'data': []}
         elif not line.startswith(':'):
@@ -361,6 +361,8 @@ def sse_frames(lines, deadline=None):
                 frame['data'].append(value)
             elif key in {'event', 'id'}:
                 frame[key] = value
+    if frame['data'] or frame['event'] or frame['id']:
+        yield {**frame, 'data': '\n'.join(frame['data'])}
 
 
 def extract_result(value):
