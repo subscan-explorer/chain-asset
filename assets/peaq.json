@@ -31,7 +31,7 @@
     "Github Link": "https://github.com/XMAQUINA-DAO",
     "Tag": "DePAI, DAO, Robotics, Physical AI",
     "Category": "erc20",
-    "Coingecko API ID": "",
+    "Coingecko API ID": "xmaquina",
     "Risk": "normal",
     "Network": "peaq"
   },
@@ -64,9 +64,12 @@
     "Discord Link": "https://discord.gg/silencionetwork",
     "Medium Link": "https://silencionetwork.medium.com",
     "Github Link": "",
-    "Tag": "",
+    "Tag": [
+      "ERC20",
+      "peaqNative"
+    ],
     "Category": "erc20",
-    "Coingecko API ID": "",
+    "Coingecko API ID": "silencio",
     "Network": "peaq"
   },
   {
@@ -129,6 +132,263 @@
     "Tag": "DePIN, Storage, Data",
     "Category": "erc20",
     "Coingecko API ID": "",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0xbba60da06c2c5424f03f7434542280fcad453d10",
+    "TokenSymbol": "USDC",
+    "Logo": "../logos/peaq_erc20_USDC.png",
+    "Description (en)": "Wrapped USDC",
+    "Description (zh)": "",
+    "Website Link": "https://www.circle.com/en/usdc",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "Stablecoin",
+      "OFT",
+      "ERC20"
+    ],
+    "Category": "erc20",
+    "Coingecko API ID": "usd-coin",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0xf4d9235269a96aadafc9adae454a0618ebe37949",
+    "TokenSymbol": "USDT",
+    "Logo": "../logos/peaq_erc20_USDT.png",
+    "Description (en)": "Wrapped USDT",
+    "Description (zh)": "",
+    "Website Link": "https://www.tether.to/en/usdt",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "Stablecoin",
+      "OFT",
+      "ERC20"
+    ],
+    "Category": "erc20",
+    "Coingecko API ID": "tether",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0x6694340fc020c5e6b96567843da2df01b2ce1eb6",
+    "TokenSymbol": "WETH",
+    "Logo": "../logos/peaq_erc20_WETH.png",
+    "Description (en)": "Wrapped ETH",
+    "Description (zh)": "",
+    "Website Link": "https://www.ethereum.org/en/eth/",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "OFT",
+      "ERC20"
+    ],
+    "Category": "erc20",
+    "Coingecko API ID": "ethereum",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0x0000000000000000000000000000000000000809",
+    "TokenSymbol": "PEAQ",
+    "Logo": "../logos/peaq_system_PEAQ.png",
+    "Description (en)": "The home of the Machine Economy.",
+    "Description (zh)": "",
+    "Website Link": "https://www.peaq.xyz",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "Precompile",
+      "ERC20",
+      "peaqNative"
+    ],
+    "Category": "system",
+    "Coingecko API ID": "peaq-2",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0x3cD66d2e1fac1751B0A20BeBF6cA4c9699Bb12d7",
+    "TokenSymbol": "WPEAQ",
+    "Logo": "../logos/peaq_erc20_WPEAQ.png",
+    "Description (en)": "ERC-20 Wrapped PEAQ",
+    "Description (zh)": "",
+    "Website Link": "https://www.peaq.xyz",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "ERC20",
+      "peaqNative",
+      "WNative"
+    ],
+    "Category": "erc20",
+    "Coingecko API ID": "wrapped-peaq",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0xee311e67825c22e5c7238546431651686ce91421",
+    "TokenSymbol": "CODEC",
+    "Logo": "../logos/peaq_erc20_CODEC.png",
+    "Description (en)": "Operator platform built on VLAs.",
+    "Description (zh)": "",
+    "Website Link": "https://www.codecflow.com/",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "OFT",
+      "ERC20"
+    ],
+    "Category": "erc20",
+    "Coingecko API ID": "codec-flow",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0xf67db9d00401d9e883208882f5c100d7482b083d",
+    "TokenSymbol": "AUKI",
+    "Logo": "../logos/peaq_erc20_AUKI.png",
+    "Description (en)": "Spatial AI sensors for AR experiences.",
+    "Description (zh)": "",
+    "Website Link": "https://www.auki.io/",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "OFT",
+      "ERC20"
+    ],
+    "Category": "erc20",
+    "Coingecko API ID": "auki-labs",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0x1190fb50226b54958e284bd674eff346936af885",
+    "TokenSymbol": "RICE",
+    "Logo": "../logos/peaq_erc20_RICE.png",
+    "Description (en)": "Research for next AI breakthroughs.",
+    "Description (zh)": "",
+    "Website Link": "https://www.rice.finance/",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "OFT",
+      "ERC20"
+    ],
+    "Category": "erc20",
+    "Coingecko API ID": "rice-ai",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0xe5330a9fba99504c534127d39727729899c9a506",
+    "TokenSymbol": "wstPEAQ",
+    "Logo": "../logos/peaq_erc20_wstPEAQ.png",
+    "Description (en)": "Wrapped staked PEAQ by Parasail.",
+    "Description (zh)": "",
+    "Website Link": "https://www.parasail.network/",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "LST",
+      "ERC20",
+      "peaqNative"
+    ],
+    "Category": "erc20",
+    "Coingecko API ID": "wrapped-parasail-staked-peaq",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0xfd9d1b4a0384396a595345886d1e1d8abf439cef",
+    "TokenSymbol": "ROBOT",
+    "Logo": "../logos/peaq_erc20_ROBOT.png",
+    "Description (en)": "Env modeling + scalable robotics compute.",
+    "Description (zh)": "",
+    "Website Link": "https://www.robotstack.io/",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "OFT",
+      "ERC20"
+    ],
+    "Category": "erc20",
+    "Coingecko API ID": "robostack",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0x6c1ca31a9f3a57bb680f82a8fe97fc00ac4aad21",
+    "TokenSymbol": "TOPS",
+    "Logo": "../logos/peaq_erc20_TOPS.png",
+    "Description (en)": "Edge network for real-time AI.",
+    "Description (zh)": "",
+    "Website Link": "https://ig3.ai/",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "ERC20",
+      "peaqNative"
+    ],
+    "Category": "erc20",
+    "Coingecko API ID": "ig3",
+    "Risk": "normal",
+    "Network": "peaq"
+  },
+  {
+    "TokenID": "0xe67F39FbE8C24ef8b3542efED1eE9963cEFC1f2a",
+    "TokenSymbol": "ANYONE",
+    "Logo": "../logos/peaq_erc20_ANYONE.png",
+    "Description (en)": "Decentralized VPN Services",
+    "Description (zh)": "",
+    "Website Link": "https://www.anyone.io/",
+    "Twitter Link": "",
+    "Telegram Link": "",
+    "Discord Link": "",
+    "Medium Link": "",
+    "Github Link": "",
+    "Tag": [
+      "OFT",
+      "ERC20"
+    ],
+    "Category": "erc20",
+    "Coingecko API ID": "airtor-protocol",
     "Risk": "normal",
     "Network": "peaq"
   }
